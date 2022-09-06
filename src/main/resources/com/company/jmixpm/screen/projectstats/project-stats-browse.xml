@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        xmlns:c="http://jmix.io/schema/ui/jpql-condition"
+        caption="msg://projectStatsBrowse.caption"
+        focusComponent="projectStatsesTable">
+    <data readOnly="true">
+        <collection id="projectStatsesDc"
+                    class="com.company.jmixpm.entity.ProjectStats">
+            <loader id="projectStatsesDl"/>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="projectStatsesTable" spacing="true">
+        <groupTable id="projectStatsesTable"
+                    width="100%"
+                    dataContainer="projectStatsesDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="projectName"/>
+                <column id="tasksCount"/>
+                <column id="plannedEfforts"/>
+                <column id="actualEfforts"/>
+            </columns>
+            <simplePagination/>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>
